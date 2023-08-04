@@ -63,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //được gọi để thiết lập nội dung hiển thị cho activity
         setContentView(binding.getRoot());
+        
+        //Cấp quyền notification
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("notification", "notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
         //gọi đến handler để nhận thay đổi
         listenerHandler();
